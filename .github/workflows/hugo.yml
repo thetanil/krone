@@ -2,14 +2,14 @@ name: hugo pages
 
 on:
   push:
-    branches:
-      - main # Set a branch to deploy asd
+    branches: [ main ]
   pull_request:
+    branches: [ main ]
 
 jobs:
   deploy:
-    # runs-on: ubuntu-20.04
-    runs-on: self-hosted
+    runs-on: ubuntu-20.04
+    # runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
         with:
@@ -23,7 +23,7 @@ jobs:
           # extended: true
 
       - name: Build
-        working-directory: ./docs
+        # working-directory: ./docs
         run: hugo --minify -d ../public
 
       - name: Deploy
